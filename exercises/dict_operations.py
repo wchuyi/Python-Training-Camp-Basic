@@ -20,4 +20,31 @@ def student_dict_operations(students_dict, operation, *args):
     - 根据操作返回不同结果
     """
     # 请在下方编写代码
-    pass 
+    if operation == "add":
+        # 添加操作需要姓名和成绩两个参数
+        name, score = args
+        students_dict[name] = score
+        return students_dict  # 返回更新后的字典
+
+    elif operation == "remove":
+        # 删除操作需要姓名参数
+        name = args[0]
+        if name in students_dict:
+            del students_dict[name]
+        return students_dict  # 返回更新后的字典
+
+    elif operation == "update":
+        # 更新操作需要姓名和新成绩两个参数
+        name, new_score = args
+        if name in students_dict:
+            students_dict[name] = new_score
+        return students_dict  # 返回更新后的字典
+
+    elif operation == "get":
+        # 查询操作需要姓名参数
+        name = args[0]
+        return students_dict.get(name)  # 返回查询到的成绩，不存在则返回None
+
+    else:
+        # 处理未知操作
+        return None
